@@ -10,5 +10,9 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+	<button onclick="location.href='/login/loginForm'" type="button">
+		move to LoginForm pages.
+	</button>
 </body>
 </html>
