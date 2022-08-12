@@ -13,7 +13,7 @@ public class LoginController {
 	public String accessLoginForm() {
 		//viewResolver가 이 메소드를 실행하게 된다.
 		//경로는 아래와 같게 된다→ /WEB-INF/views/ + login/loginForm + .jsp
-		System.out.println("LoginController-");
+		System.out.println("LoginController-accessLoginForm");
 		return "/login/loginForm";
 	}
 	

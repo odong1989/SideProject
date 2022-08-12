@@ -5,6 +5,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 LoginForm 페이지입니다.
+	 LoginForm pages.
 </body>
 </html>
