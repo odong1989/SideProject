@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMapper">
+	<select id="loginCheck" 
+			parameterType="com.test.main.login.dto.UserDto" 
+			resultType="com.test.main.login.dto.UserDto">
+		SELECT
+			* 
+		FROM 
+			accountbook.user
+		where 
+			accountbook.user.user_email = #{userEmail}
+		and 
+			accountbook.user.password = #{userPassword};
+	
+	</select>
+</mapper>
