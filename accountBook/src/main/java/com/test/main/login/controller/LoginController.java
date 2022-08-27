@@ -19,7 +19,6 @@ import com.test.main.login.service.LoginService;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-
 	
 	@Autowired
 	LoginService loginService;
@@ -29,7 +28,6 @@ public class LoginController {
 		System.out.println("LoginController-accessLoginForm");
 		return "/login/loginForm";
 	}
-	
 	
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public String loginCheck(Model model, UserDto userDto, HttpServletRequest httpServletRequest ) throws Exception {

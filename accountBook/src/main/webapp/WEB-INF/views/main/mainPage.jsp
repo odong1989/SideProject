@@ -99,9 +99,9 @@
 			</tr>
 		</table>
 		
-		<button>account record</button>
-		
-		
-		
+		<button type="button" onclick="location.href='/main/accountBook/recordDepositAndWithdrawal'" >
+			move to recordDepositAndWithdrawal
+		</button>
+
 	</body>
 </html>
