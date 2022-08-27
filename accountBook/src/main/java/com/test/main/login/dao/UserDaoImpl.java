@@ -14,6 +14,8 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public UserDto loginCheck(UserDto userDto) throws Exception{
 		System.out.println("UserDaoImpl-loginCheck");
+		System.out.println("UserEmail:"+userDto.getUserEmail());
+		System.out.println("UserPassword:"+userDto.getUserPassword());
 		return sqlSessionTemplate.selectOne("userMapper.loginCheck", userDto);
 	}	
 }

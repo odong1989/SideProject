@@ -16,6 +16,7 @@ public class UserDto {
 	private String	dateOfMembershipEnd;	//, date_of_membership_end timestamp(6) without time zone
 	private String 	typeOfMembership;		//, type_of_membership character(1) default '0' not null
 
+	
 	public String getUserEmail() {
 		return userEmail;
 	}

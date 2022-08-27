@@ -32,14 +32,21 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-	public String loginCheck(UserDto userDto, HttpServletRequest httpServletRequest ) throws Exception {
+	public String loginCheck(Model model, UserDto userDto, HttpServletRequest httpServletRequest ) throws Exception {
 		//HttpSession httpSession = httpServletRequest.getSession();
-	
-		loginService.loginCheck(userDto);
 		
-		
+		UserDto resultUserDto = loginService.loginCheck(userDto);
 		System.out.println("LoginController-loginCheck");
-		return "/login/loginForm";
+		if( !(resultUserDto == null) ) {
+			model.addAttribute("loginUser", resultUserDto );
+			System.out.println("LoginController-loginCheck-login success");
+			return "/main/mainPage";
+		}		
+		else {
+			System.out.println("LoginController-loginCheck-login failed");
+			return "/login/loginForm";			
+		}
+
 	}
 	
 }

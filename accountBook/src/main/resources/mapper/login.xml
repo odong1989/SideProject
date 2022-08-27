@@ -7,13 +7,24 @@
 			parameterType="com.test.main.login.dto.UserDto" 
 			resultType="com.test.main.login.dto.UserDto">
 		SELECT
-			* 
+			user_email					as "userEmail",
+			family_name					as "familyName",
+			last_name					as "lastName",
+			phone_number1				as "phoneNumber1",
+			phone_number2				as "phoneNumber2",
+			phone_number3				as "phoneNumber2",
+			reported_count				as "reportedCount",
+			freeze_flag					as "freezeFlag",
+			date_of_dormant_start		as "dateOfDormantStart",
+			date_of_dormant_end			as "dateOfDormantEnd",
+			date_of_membership_start	as "dateOfMembershipStart",
+			date_of_membership_end		as "dateOfMembershipEnd",
+			type_of_membership			as "typeOfMembership"
 		FROM 
 			accountbook.user
 		where 
 			accountbook.user.user_email = #{userEmail}
 		and 
-			accountbook.user.password = #{userPassword};
-	
+			accountbook.user.password = #{userPassword}
 	</select>
 </mapper>

@@ -16,6 +16,8 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public UserDto loginCheck(UserDto userDto) throws Exception {
 		System.out.println("LoginService-loginCheck");
+		System.out.println("UserEmail:"+userDto.getUserEmail());
+		System.out.println("UserPassword:"+userDto.getUserPassword());
 		return userdao.loginCheck(userDto);
 	}
 }
