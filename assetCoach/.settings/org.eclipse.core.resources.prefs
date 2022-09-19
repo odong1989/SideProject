@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/BK/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/accountBook/recordDepositAndWithdrawal.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/login/loginForm.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/main/accountBook/recordDepositAndWithdrawal.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/main/mainPage.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mainPage.jsp=UTF-8

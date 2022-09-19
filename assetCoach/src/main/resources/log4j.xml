@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.test.main">
+	<logger name="com.assetcoach.main">
 		<level value="info" />
 	</logger>
 	
