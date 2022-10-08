@@ -12,13 +12,13 @@
 		
 		<table  border="1" style="margin:5%;" >
 			<tr>
-				<td rowspan="2">
+				<td colspan="2">
 					金融機関の名前
 				</td>
 				<td>
 					金融機関の支店名
 				</td>
-				<td>
+				<td colspan="2">
 					口座の残高
 				</td>
 				<td>
@@ -37,15 +37,19 @@
 			<tr>
 				<!-- 金融機関のLogoimage -->
 				<td>
+					[Ex]Logo
 				</td>
 				<!-- 金融機関の名前 -->
 				<td>
+					농협
 				</td>
 				<!-- 金融機関の支店名 -->
 				<td>
+					안성 당왕동
 				</td>
 				<!-- 口座の残高 -->
 				<td>
+					
 				</td>
 				<!-- 口座番号 -->
 				<td>

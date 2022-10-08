@@ -1,6 +1,7 @@
 package com.assetcoach.main.login.dto;
 
 public class UserDto {
+	private int   	userIdx;				//user_idx integer not null
 	private String 	userEmail;				//, user_email character(64) not null
 	private String 	userPassword;				//, password character(64) not null
 	private String 	familyName;				//, family_name character varying(100) not null
@@ -16,7 +17,12 @@ public class UserDto {
 	private String	dateOfMembershipEnd;	//, date_of_membership_end timestamp(6) without time zone
 	private String 	typeOfMembership;		//, type_of_membership character(1) default '0' not null
 
-	
+	public int getUserIdx() {
+		return userIdx;
+	}
+	public void setUserIdx(int userIdx) {
+		this.userIdx = userIdx;
+	}
 	public String getUserEmail() {
 		return userEmail;
 	}

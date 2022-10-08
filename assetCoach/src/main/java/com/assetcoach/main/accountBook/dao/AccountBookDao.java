@@ -1,7 +1,7 @@
-package com.assetcoach.main.accountBook.service;
+package com.assetcoach.main.accountBook.dao;
 
 import com.assetcoach.main.accountBook.dto.AccountBookDto;
 
-public interface accountBookService {
+public interface AccountBookDao {
 	public void manageTheRecordOfTransactions(AccountBookDto accountBookDto) throws Exception;
 }

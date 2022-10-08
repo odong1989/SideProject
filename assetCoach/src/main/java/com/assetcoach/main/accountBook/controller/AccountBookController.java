@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.assetcoach.main.accountBook.dto.AccountBookDto;
+
 @Controller
 @RequestMapping("/accountBook")
 public class AccountBookController {
@@ -14,5 +16,12 @@ public class AccountBookController {
 		System.out.println("AccountBookController-recordDepositAndWithdrawal");
 		return "/accountBook/recordDepositAndWithdrawal";
 	}
-	
+	/*
+	@RequestMapping(value="manageTheRecordOfTransactions", method= RequestMethod.POST)
+	public String manageTheRecordOfTransactions(AccountBookDto accountBookDto) {
+		System.out.println("AccountBookController-manageTheRecordOfTransactions");
+		return "/accountBook/recordDepositAndWithdrawal";
+	}
+	*/	
+
 }
