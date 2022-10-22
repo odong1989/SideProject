@@ -1,9 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="jp">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<head>
 	<title>account Manage Main Page</title>
 	</head>
@@ -67,7 +68,7 @@
 		</table>
 		
 		新しい口座を登録します。
-		<form action="/accountManage/addAccount" method="post">
+		<form action="/accountManage/addBankAccount" method="post">
 			<table  border="1" style="margin:5%;" >
 				<tr>
 					<td colspan="2">

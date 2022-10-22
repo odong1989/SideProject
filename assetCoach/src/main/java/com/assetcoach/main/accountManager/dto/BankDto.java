@@ -1,6 +1,8 @@
 package com.assetcoach.main.accountManager.dto;
 
 public class BankDto {
+	private String userIdx;
+
 	private String bankIdx;		//bankIdx integer not null
 	private String branchIdx;	//, branchIdx integer not null
 	private String nation;	    //, nation character(1)
@@ -10,6 +12,13 @@ public class BankDto {
 
 	public String getBankIdx() {
 		return bankIdx;
+	}
+	public String getUserIdx() {
+		return userIdx;
+	}
+	
+	public void setUserIdx(String userIdx) {
+		this.userIdx = userIdx;
 	}
 	public void setBankIdx(String bankIdx) {
 		this.bankIdx = bankIdx;

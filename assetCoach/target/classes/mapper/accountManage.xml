@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="accountManageMapper">
+	<insert id="addBankAccount" 
+			parameterType="com.assetcoach.main.accountManager.dto.BankDto">						   
+		INSERT INTO assetcoach.bank( 
+			bank_idx,
+			branch_idx,
+			<!-- nation, -->
+			name,
+			branch_name,
+			rec_create_user_idx,
+			rec_create_date
+		) 
+		VALUES ( 
+			1,<!-- bank_idx integer not null -->
+			2,<!-- , branch_idx integer not null -->
+			<!-- , nation character(1) -->
+			#{bankName},<!-- , name character varying(100) -->
+			#{branchName}, <!-- , branch_name character varying(100) -->
+			<!-- , logo character(1) -->
+			#{userIdx},<!-- , rec_create_user_idx bigint -->
+			NOW()<!-- , rec_create_date timestamp(6) without time zone -->
+		)
+	</insert>
+</mapper>
