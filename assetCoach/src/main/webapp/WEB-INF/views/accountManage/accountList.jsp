@@ -67,7 +67,7 @@
 		</table>
 		
 		新しい口座を登録します。
-		<form>
+		<form action="/accountManage/addAccount" method="post">
 			<table  border="1" style="margin:5%;" >
 				<tr>
 					<td colspan="2">
@@ -97,17 +97,20 @@
 					</td>
 					<!-- 金融機関の名前 -->
 					<td>
+						<input type="text" name="bankName"> 
 					</td>
 					<!-- 金融機関の支店名 -->
 					<td>
+						<input type="text" name="branchName"> 
 					</td>
 					<!-- 口座の残高(貨幣&金額) -->
 					<!-- 口座の貨幣 -->
 					<td>
-						<!-- JPY(¥) -->
+						
 					</td>
 					<!-- 口座の金額 -->
 					<td>
+						
 					</td>
 					
 					<!-- 口座番号 -->
@@ -120,6 +123,11 @@
 					<td>
 					</td>
 				</tr>
-			</table>		
+			</table>
+			
+			<button type="submit">
+				この口座情報を登録します。
+			</button>
+					
 		</form>
 </html>

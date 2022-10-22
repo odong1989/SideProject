@@ -1,6 +1,6 @@
 package com.assetcoach.main.accountManager.dto;
 
-public class accountDto {
+public class AccountDto {
 
 	//account Table
 	private int accountIdx;			//account_idx integer not null
