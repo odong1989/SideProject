@@ -13,7 +13,8 @@ public class AccountBookDaoImpl implements AccountBookDao{
 	
 	@Override
 	public void manageTheRecordOfTransactions(AccountBookDto accountBookDto) throws Exception {
-		//SqlSessionTemplate.insert("accountBookMapper.manageTheRecordOfTransactions",accountBookDto);
+		SqlSessionTemplate.insert("accountBookMapper.manageTheRecordOfTransactions",accountBookDto);
+		System.out.println("temp check insert");
 	}
 	
 }

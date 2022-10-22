@@ -99,13 +99,16 @@
 				</td>
 			</tr>
 		</table>
-		
+
+
+		<!-- move to recordDepositAndWithdrawal	-->
 		<button type="button" onclick="location.href='/accountBook/recordDepositAndWithdrawal'" >
-			move to recordDepositAndWithdrawal
+			家計簿を登録する
 		</button>
 
+		<!-- move to accountManage accountList -->
 		<button type="button" onclick="location.href='/accountManage/accountList'" >
-			move to accountManage accountList
+			口座を登録する。
 		</button>
 
 	</body>

@@ -15,7 +15,7 @@ public class AccountBookDto {
 	private String typeTheImcomeOrPay;
 	private String accuntType;		
 	private String currencyType;	
-	private double purchase;
+	private String purchase;
 	private String dateOfTraiding; 
 	private String contents;
 	
@@ -61,10 +61,11 @@ public class AccountBookDto {
 	public void setCurrencyType(String currencyType) {
 		this.currencyType = currencyType;
 	}
-	public double getPurchase() {
+	
+	public String getPurchase() {
 		return purchase;
 	}
-	public void setPurchase(double purchase) {
+	public void setPurchase(String purchase) {
 		this.purchase = purchase;
 	}
 	public String getDateOfTraiding() {

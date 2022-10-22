@@ -8,7 +8,7 @@ import com.assetcoach.main.accountBook.dao.AccountBookDao;
 import com.assetcoach.main.accountBook.dto.AccountBookDto;
 
 @Service("accountBookService")
-public class AccountBookServiceImpl implements accountBookService{
+public class AccountBookServiceImpl implements AccountBookService{
 
 	@Inject AccountBookDao accountBookDao;
 
