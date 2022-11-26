@@ -3,13 +3,12 @@ package com.assetcoach.main.accountManager.dto;
 public class BankDto {
 	private String userIdx;
 
-	private String bankIdx;		//bankIdx integer not null
-	private String branchIdx;	//, branchIdx integer not null
-	private String nation;	    //, nation character(1)
-	private String bankName;	//, name character varying(100)
-	private String branchName;	//, branch_name character varying(100)
-			  					//, logo character(1)
-
+	private String bankIdx;		
+	private String branchIdx;
+	private String bankNation;	
+	private String bankName;	
+	private String branchName;
+	
 	public String getBankIdx() {
 		return bankIdx;
 	}
@@ -29,12 +28,7 @@ public class BankDto {
 	public void setBranchIdx(String branchIdx) {
 		this.branchIdx = branchIdx;
 	}
-	public String getNation() {
-		return nation;
-	}
-	public void setNation(String nation) {
-		this.nation = nation;
-	}
+
 	public String getBankName() {
 		return bankName;
 	}
@@ -46,6 +40,12 @@ public class BankDto {
 	}
 	public void setBranchName(String branchName) {
 		this.branchName = branchName;
+	}
+	public String getBankNation() {
+		return bankNation;
+	}
+	public void setBankNation(String bankNation) {
+		this.bankNation = bankNation;
 	}
 	
 }

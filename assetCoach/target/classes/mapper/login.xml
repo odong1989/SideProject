@@ -7,6 +7,7 @@
 			parameterType="com.assetcoach.main.login.dto.UserDto" 
 			resultType="com.assetcoach.main.login.dto.UserDto">
 		SELECT
+			user_idx 					as "userIdx",
 			user_email					as "userEmail",
 			family_name					as "familyName",
 			last_name					as "lastName",

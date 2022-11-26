@@ -1,48 +1,32 @@
 package com.assetcoach.main.accountManager.dto;
 
 public class AccountDto {
+	private int userIdx; 			// , user_idx integer not null
+	private int bankIdx; 			//金融機関の名前 , bank_idx integer
+	private int bankBranchIdx;		//金融機関の支店名, bank_branch_idx integer
+	private String accountNumber;	//口座番号, account_number character varying(100)
+	private String familyName;		//口座の姓, family_name character varying(100)
+	private String lastName;		//口座の名, last_name character varying(100)
+	private String nickname;		//口座の別名, nickname character varying(100)
+	private String memo;			//口座説明, memo character varying(100)
 
-	//account Table
-	private int accountIdx;			//account_idx integer not null
-	private int userIdx;			//, user_idx integer not null
-	private int dailryIdx;			//, dailry_idx integer
-	private String assetType; 		//, asset_type character(1)
-	private String accountNumber;	//, account_number character varying(100)
-	private String familyName;		//, family_name character varying(100)
-	private String lastName;		//, last_name character varying(100)
-	private String nickname;		//, nickname character varying(100)
-	private String memo;			//, memo character varying(100)
-	private long holdingSum; 		//, holding_sum numeric(20, 5)
-	
-	//bank Table
-	private int bankIdx; 			//, bank_idx integer
-	private String nation;			//, nation character(1)
-	private String name; 		//銀行の名	//, name character varying(100)
-	private String branchName; 		//, branch_name character varying(100)
-	private String logo;//, logo character(1)
-	public int getAccountIdx() {
-		return accountIdx;
-	}
-	public void setAccountIdx(int accountIdx) {
-		this.accountIdx = accountIdx;
-	}
 	public int getUserIdx() {
 		return userIdx;
 	}
 	public void setUserIdx(int userIdx) {
 		this.userIdx = userIdx;
 	}
-	public int getDailryIdx() {
-		return dailryIdx;
+	public int getBankIdx() {
+		return bankIdx;
 	}
-	public void setDailryIdx(int dailryIdx) {
-		this.dailryIdx = dailryIdx;
+	public void setBankIdx(int bankIdx) {
+		this.bankIdx = bankIdx;
 	}
-	public String getAssetType() {
-		return assetType;
+	public int getBankBranchIdx() {
+		return bankBranchIdx;
 	}
-	public void setAssetType(String assetType) {
-		this.assetType = assetType;
+	public void setBankBranchIdx(int bankBranchIdx) {
+		this.bankBranchIdx = bankBranchIdx;
 	}
 	public String getAccountNumber() {
 		return accountNumber;
@@ -73,42 +57,6 @@ public class AccountDto {
 	}
 	public void setMemo(String memo) {
 		this.memo = memo;
-	}
-	public long getHoldingSum() {
-		return holdingSum;
-	}
-	public void setHoldingSum(long holdingSum) {
-		this.holdingSum = holdingSum;
-	}
-	public int getBankIdx() {
-		return bankIdx;
-	}
-	public void setBankIdx(int bankIdx) {
-		this.bankIdx = bankIdx;
-	}
-	public String getNation() {
-		return nation;
-	}
-	public void setNation(String nation) {
-		this.nation = nation;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getBranchName() {
-		return branchName;
-	}
-	public void setBranchName(String branchName) {
-		this.branchName = branchName;
-	}
-	public String getLogo() {
-		return logo;
-	}
-	public void setLogo(String logo) {
-		this.logo = logo;
 	}
 	
 }

@@ -3,6 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="accountBookMapper">
+	<select id="listOfUserBankAccount" 
+			parameterType="com.assetcoach.main.accountBook.dto.AccountBookDto">
+		SELECT	
+			account_idx 	as "bankIdx",
+			bank_idx 		as "branchIdx",
+			bank_branch_idx as "accountIdx", 
+			account_number	as "accountNumber",
+		FROM 
+			assetcoach.account
+		where 
+			assetcoach.user.user_idx = #{userIdx}
+	</select>
+
+
 	<insert id="manageTheRecordOfTransactions" 
 			parameterType="com.assetcoach.main.accountBook.dto.AccountBookDto">
 	INSERT INTO assetcoach.record_of_transactions( 

@@ -1,9 +1,12 @@
 package com.assetcoach.main.accountManager.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.assetcoach.main.accountManager.dto.AccountDto;
 import com.assetcoach.main.accountManager.dto.BankDto;
 
 @Repository
@@ -11,8 +14,14 @@ public class AccountManageDaoImpl implements AccountManageDao{
 	@Autowired SqlSessionTemplate SqlSessionTemplate;
 
 	@Override
-	public void addBankAccount(BankDto bankDto) throws Exception {
-		SqlSessionTemplate.insert("accountManageMapper.addBankAccount",bankDto);
+	public List<BankDto> bankListOfSelect() {
+		return SqlSessionTemplate.selectList("bankMapper.bankListOfSelect");
+	}
+	
+	@Override
+	public void addUserBankAccount(AccountDto accountDto) throws Exception {
+		SqlSessionTemplate.insert("accountManageMapper.addUserBankAccount",accountDto);
 		System.out.println("temp check insert bank Table");
 	}
+
 }

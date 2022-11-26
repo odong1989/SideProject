@@ -3,26 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="accountManageMapper">
-	<insert id="addBankAccount" 
-			parameterType="com.assetcoach.main.accountManager.dto.BankDto">						   
-		INSERT INTO assetcoach.bank( 
+	<insert id="addUserBankAccount" 
+			parameterType="com.assetcoach.main.accountManager.dto.AccountDto">						   
+		insert into assetcoach.account(
+			user_idx,
 			bank_idx,
-			branch_idx,
-			<!-- nation, -->
-			name,
-			branch_name,
+			bank_branch_idx,
+			account_number,
+			family_name,
+			last_name,
+			nickname,
+			memo,
+			holding_sum,
 			rec_create_user_idx,
 			rec_create_date
-		) 
-		VALUES ( 
-			1,<!-- bank_idx integer not null -->
-			2,<!-- , branch_idx integer not null -->
-			<!-- , nation character(1) -->
-			#{bankName},<!-- , name character varying(100) -->
-			#{branchName}, <!-- , branch_name character varying(100) -->
-			<!-- , logo character(1) -->
-			#{userIdx},<!-- , rec_create_user_idx bigint -->
-			NOW()<!-- , rec_create_date timestamp(6) without time zone -->
+		) VALUES ( 
+			#{userIdx},<!-- user_idx -->
+			#{bankIdx},<!-- bank_idx -->
+			#{bankBranchIdx},<!-- bank_branch_idx -->
+			#{accountNumber},<!-- account_number -->
+			#{familyName},<!-- family_name -->
+			#{lastName},<!-- last_name -->
+			#{nickname},<!-- nickname -->
+			#{memo},<!-- memo -->
+			0,<!-- holding_sum -->
+			#{userIdx},<!-- rec_create_user_idx -->
+			NOW()<!-- rec_create_date -->
 		)
 	</insert>
 </mapper>
