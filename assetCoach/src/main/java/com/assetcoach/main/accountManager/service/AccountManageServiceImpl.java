@@ -14,6 +14,11 @@ import com.assetcoach.main.accountManager.dto.BankDto;
 public class AccountManageServiceImpl implements AccountManageService{
 
 	@Inject AccountManageDao accountManageDao;
+
+	@Override
+	public List<AccountDto> bankAccountOfUser(int userIdx) throws Exception {
+		return accountManageDao.bankAccountOfUser(userIdx) ;
+	}
 	
 	@Override
 	public List<BankDto> bankListOfSelect() {

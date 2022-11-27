@@ -25,7 +25,7 @@ public class AccountManageController {
 	@Autowired LoginService loginService;
 	
 	@RequestMapping(value = "/accountList", method = RequestMethod.GET)
-	public String accessAccountList(Model model, UserDto userDto, HttpServletRequest httpServletRequest) throws Exception  {
+	public String accessAccountList(Model model, HttpServletRequest httpServletRequest) throws Exception  {
 		System.out.println("AccountManageController_accountList");
 
 		HttpSession httpSession = httpServletRequest.getSession();
@@ -36,12 +36,15 @@ public class AccountManageController {
 		if(httpSession.getAttribute("userEmail")!=null){
 			//model.addAttribute("loginUser", resultUserDto );
 			System.out.println("AccountManageController-accountList-login success");
-
+			
+			int userIdx = (Integer) httpSession.getAttribute("userIdx");
+			List<AccountDto> userBankAccountList = accountManageService.bankAccountOfUser( userIdx );
 			List<BankDto> bankList = accountManageService.bankListOfSelect();
 			
 			model.addAttribute("userEmail", httpSession.getAttribute("userEmail") );
 			model.addAttribute("userIdx", httpSession.getAttribute("userIdx") );
 			model.addAttribute("bankList", bankList );
+			model.addAttribute("userBankAccountList", userBankAccountList );
 			
 			System.out.println("move to accountList");
 			return "/accountManage/accountList";			
@@ -54,14 +57,33 @@ public class AccountManageController {
 	}
 	
 	@RequestMapping(value="/addUserBankAccount", method= RequestMethod.POST)
-	public String addUserBankAccount(AccountDto accountDto, HttpServletRequest httpServletRequest) throws Exception {
+	public String addUserBankAccount(Model model, AccountDto accountDto, HttpServletRequest httpServletRequest) throws Exception {
 		System.out.println("execute addUserBankAccount");
+
+		HttpSession httpSession = httpServletRequest.getSession();
 		
-		accountDto.setUserIdx(1);
-		//accountDto.setUserIdx( accountDto.getUserIdx() );
+		System.out.println("LoginUser UserEmail:"+httpSession.getAttribute("userEmail") );
+		System.out.println("LoginUser UserIdx:"+httpSession.getAttribute("userIdx") );
+
+		
+		//accountDto.setUserIdx( httpSession.getAttribute("userIdx") );
+		//accountDto.setUserIdx(1);
+		accountDto.setUserIdx( accountDto.getUserIdx() );
 		
 		accountManageService.addUserBankAccount(accountDto);
+		
 
+		int userIdx = (Integer) httpSession.getAttribute("userIdx");
+		List<AccountDto> userBankAccountList = accountManageService.bankAccountOfUser( userIdx );
+		List<BankDto> bankList = accountManageService.bankListOfSelect();
+		
+		
+		model.addAttribute("userEmail", httpSession.getAttribute("userEmail") );
+		model.addAttribute("userIdx", httpSession.getAttribute("userIdx") );
+		model.addAttribute("bankList", bankList );
+		model.addAttribute("userBankAccountList", userBankAccountList );
+		
+		
 		return "/accountManage/accountList";
 	}
 	

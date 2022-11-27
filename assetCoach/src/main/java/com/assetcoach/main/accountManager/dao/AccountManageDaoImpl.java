@@ -14,6 +14,12 @@ public class AccountManageDaoImpl implements AccountManageDao{
 	@Autowired SqlSessionTemplate SqlSessionTemplate;
 
 	@Override
+	public List<AccountDto> bankAccountOfUser(int userIdx) throws Exception {
+		return SqlSessionTemplate.selectList("accountManageMapper.bankAccountOfUser",userIdx);
+	}
+
+	
+	@Override
 	public List<BankDto> bankListOfSelect() {
 		return SqlSessionTemplate.selectList("bankMapper.bankListOfSelect");
 	}

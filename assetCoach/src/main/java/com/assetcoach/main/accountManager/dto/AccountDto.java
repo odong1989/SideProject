@@ -4,12 +4,33 @@ public class AccountDto {
 	private int userIdx; 			// , user_idx integer not null
 	private int bankIdx; 			//金融機関の名前 , bank_idx integer
 	private int bankBranchIdx;		//金融機関の支店名, bank_branch_idx integer
+	private String bankName;
+	private String bankBranchName;
+	private double holdingSum;
 	private String accountNumber;	//口座番号, account_number character varying(100)
 	private String familyName;		//口座の姓, family_name character varying(100)
 	private String lastName;		//口座の名, last_name character varying(100)
 	private String nickname;		//口座の別名, nickname character varying(100)
 	private String memo;			//口座説明, memo character varying(100)
 
+	public double getHoldingSum() {
+		return holdingSum;
+	}
+	public void setHoldingSum(double holdingSum) {
+		this.holdingSum = holdingSum;
+	}
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	public String getBankBranchName() {
+		return bankBranchName;
+	}
+	public void setBankBranchName(String bankBranchName) {
+		this.bankBranchName = bankBranchName;
+	}
 	public int getUserIdx() {
 		return userIdx;
 	}

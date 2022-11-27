@@ -3,6 +3,43 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="accountManageMapper">
+	<select id="bankAccountOfUser" 
+			parameterType="int"
+			resultType="com.assetcoach.main.accountManager.dto.AccountDto">				   
+		select
+			user_idx as userIdx
+			, bank_idx as bankIdx
+			, bank_branch_idx as bankBranchIdx
+			,(select DISTINCT
+				assetcoach.bank.name 
+				from 
+					assetcoach.bank
+				WHERE 
+					bank.bank_idx = account.bank_idx
+		 			and bank.branch_idx = account.bank_branch_idx
+			) as bankName
+			, (select DISTINCT
+		 			assetcoach.bank.branch_name 
+				from 
+					assetcoach.bank
+				WHERE 
+					bank.bank_idx = account.bank_idx
+			 		and bank.branch_idx = account.bank_branch_idx
+		  	) as bankBranchName
+			, account_number as accountNumber
+			, family_name as familyName
+			, last_name as lastName
+			, nickname as nickname
+			, memo as memo
+		from
+			assetcoach.account
+		where
+			logical_del_flag = '0' 
+			and user_idx = #{userIdx}
+		ORDER by 
+			assetcoach.account.bank_idx ASC;			
+	</select>
+
 	<insert id="addUserBankAccount" 
 			parameterType="com.assetcoach.main.accountManager.dto.AccountDto">						   
 		insert into assetcoach.account(
@@ -16,7 +53,8 @@
 			memo,
 			holding_sum,
 			rec_create_user_idx,
-			rec_create_date
+			rec_create_date,
+			logical_del_flag
 		) VALUES ( 
 			#{userIdx},<!-- user_idx -->
 			#{bankIdx},<!-- bank_idx -->
@@ -28,7 +66,8 @@
 			#{memo},<!-- memo -->
 			0,<!-- holding_sum -->
 			#{userIdx},<!-- rec_create_user_idx -->
-			NOW()<!-- rec_create_date -->
+			NOW(),<!-- rec_create_date -->
+			0	<!-- logical_del_flag -->
 		)
 	</insert>
 </mapper>

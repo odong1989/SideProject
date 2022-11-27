@@ -31,85 +31,56 @@
 		現在口座情報です。
 		<table  border="1" style="margin:5%;" >
 			<tr>
-				<td colspan="2">
-					金融機関の名前
-				</td>
-				<td>
-					金融機関の支店名
-				</td>
-				<td colspan="2">
-					口座の残高
-				</td>
-				<td>
-					口座番号
-				</td>
-				<td>
-					口座の別名
-				</td>
-				<td>
-					口座説明
-				</td>
+				<th colspan="2"> 金融機関の名前 </th>
+				<th> 金融機関の支店名 </th>
+				<th colspan="2"> 口座の残高 </th>
+				<th> 口座番号 </th>
+				<th> 口座の別名 </th>
+				<th> 口座説明 </th>
 			</tr>
-
-			<tr>
-				<!-- 金融機関のlOGO名前 -->
-				<!-- 金融機関のLogoimage -->
-				<td>
-				</td>
-				<!-- 金融機関の名前 -->
-				<td>
-				</td>
-				<!-- 金融機関の支店名 -->
-				<td>
-				</td>
-				<!-- 口座の金額 -->
-				<td>
-				</td>
-				
-				<!-- 口座番号 -->
-				<td>
-				</td>
-				<!-- 口座の別名 -->
-				<td>
-				</td>
-				<!-- 口座説明 -->
-				<td>
-				</td>
-			</tr>
+			
+			<c:forEach var="userBankAccount" items="${userBankAccountList}">
+				<tr>
+					<!-- 金融機関の名前 -->
+					<td>LogoImage</td><!-- 金融機関のLogoimage -->
+					<td>${userBankAccount.bankName}</td><!-- 金融機関のlOGO名前 -->
+					<!-- 金融機関の支店名 --> 
+					<td>${userBankAccount.bankBranchName}</td>
+					<!-- 口座の残高 -->
+					<td>KRW<!-- currencyType --></td> 
+					<td>5,000,000<!-- holdingSum --></td> 
+					<!-- 口座番号 --> 
+					<td>${userBankAccount.accountNumber}</td> 
+					<!-- 口座の別名 --> 
+					<td>${userBankAccount.nickname}</td> 
+					<!-- 口座説明 --> 
+					<td>${userBankAccount.memo}</td>
+				</tr>
+			</c:forEach>
 		</table>
 		
+		<br />
+		----------------------------------------------------------------------------------------
+
+		<br />
 		新しい口座を登録します。
+
+		<br />
 		<form action="/main/accountManage/addUserBankAccount" method="post">
-			<table  border="1" style="margin:5%;" >
+			<table border="1" style="margin:5%;" >
 				<tr>
-					<td>
-						金融機関の名前	<!-- bankIdx -->
-					</td>
-					<td>
-						金融機関の支店名<!-- bankBranchIdx -->
-					</td>
-					<td>
-						口座番号			<!-- accountNumber -->
-					</td>
-					<td>
-						口座の姓 		<!-- familyName -->
-					</td>
-					<td>
-						口座の名			<!-- lastName -->
-					</td>
-					<td>
-						口座の別名		<!-- nickname -->
-					</td>
-					<td>
-						口座説明			<!-- memo -->
-					</td>
+					<td>金融機関の名前</td>
+					<td>金融機関の支店名</td>
+					<td>口座番号</td>
+					<td>口座の姓</td>
+					<td>口座の名</td>
+					<td>口座の別名</td>
+					<td>口座説明</td>
 				</tr>
-	
 				<tr>
-					<input type="hidden" name="userIdx" value="1"> 
-					
+					<input type="hidden" name="userIdx" value="${userIdx}"> 
 					<!-- 金融機関の名前 -->
-					<td style="width: 200px; margin-left: 2%;">
+					<td style="width= 250px;">
 						<select id="bankList" name="bankIdx"> 
 							<c:forEach var="bank" items="${bankList}">
 								<option value="${bank.bankIdx}">
@@ -119,7 +90,7 @@
 						</select>
 					</td>
 					<!-- 金融機関の支店名 -->
-					<td>
+					<td style="width: 250px;">
 						<select id="bankList" name="bankBranchIdx"> 
 							<c:forEach var="bank" items="${bankList}">
 								<option value="${bank.branchIdx}">
@@ -130,25 +101,15 @@
 
 					</td>
 					<!-- 口座番号 -->
-					<td>
-						<input type="text" name="accountNumber"> 
-					</td>
+					<td> <input type="text" name="accountNumber"> </td>
 					<!-- 口座の姓 -->
-					<td>
-						<input type="text" name="familyName"> 
-					</td>
+					<td> <input type="text" name="familyName"> </td>
 					<!-- 口座の名 -->
-					<td>
-						<input type="text" name="accountNumber"> 
-					</td>
+					<td> <input type="text" name="lastName"> </td>
 					<!-- 口座の別名 -->
-					<td>
-						<input type="text" name="lastName"> 
-					</td>
+					<td> <input type="text" name="lastName"> </td>
 					<!-- 口座説明  -->
-					<td>
-						<input type="text" name="memo"> 
-					</td>
+					<td> <input type="text" name="memo"> </td>
 				</tr>
 			</table>
 			
