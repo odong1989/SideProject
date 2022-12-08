@@ -12,13 +12,16 @@ public class AccountBookDto {
 	//DB table name : record_of_transactions
 	private int accountIdx; 
 	private int accountNumber;
+	private int userIdx; 	
+	private String bankName;
+	private String bankBranchName;
+	
 	private String typeTheImcomeOrPay;
 	private String accuntType;		
 	private String currencyType;	
 	private String purchase;
 	private String dateOfTraiding; 
 	private String contents;
-	
 	public int getBankIdx() {
 		return bankIdx;
 	}
@@ -43,6 +46,24 @@ public class AccountBookDto {
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
+	public int getUserIdx() {
+		return userIdx;
+	}
+	public void setUserIdx(int userIdx) {
+		this.userIdx = userIdx;
+	}
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	public String getBankBranchName() {
+		return bankBranchName;
+	}
+	public void setBankBranchName(String bankBranchName) {
+		this.bankBranchName = bankBranchName;
+	}
 	public String getTypeTheImcomeOrPay() {
 		return typeTheImcomeOrPay;
 	}
@@ -61,7 +82,6 @@ public class AccountBookDto {
 	public void setCurrencyType(String currencyType) {
 		this.currencyType = currencyType;
 	}
-	
 	public String getPurchase() {
 		return purchase;
 	}
@@ -80,7 +100,5 @@ public class AccountBookDto {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	
-	
-	
+		
 }

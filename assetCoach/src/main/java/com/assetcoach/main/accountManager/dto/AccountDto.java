@@ -1,6 +1,7 @@
 package com.assetcoach.main.accountManager.dto;
 
 public class AccountDto {
+	private int accountIdx;
 	private int userIdx; 			// , user_idx integer not null
 	private int bankIdx; 			//金融機関の名前 , bank_idx integer
 	private int bankBranchIdx;		//金融機関の支店名, bank_branch_idx integer
@@ -13,6 +14,12 @@ public class AccountDto {
 	private String nickname;		//口座の別名, nickname character varying(100)
 	private String memo;			//口座説明, memo character varying(100)
 
+	public int getAccountIdx() {
+		return accountIdx;
+	}
+	public void setAccountIdx(int accountIdx) {
+		this.accountIdx = accountIdx;
+	}
 	public double getHoldingSum() {
 		return holdingSum;
 	}

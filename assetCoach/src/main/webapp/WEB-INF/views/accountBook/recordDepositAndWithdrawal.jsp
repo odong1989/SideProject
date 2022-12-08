@@ -4,121 +4,78 @@
 <html>
 	<body>
 		recordDepositAndWithdrawal page.
-		
+
 		<div style="margin:5%;" >
-			List of accounts.
+			Sample
 			<table border="1">
 				<tr>
-					<td>
-						日付
-					</td>
-					<td>
-						金の出入り(収入/支出)
-					</td>
-					<td>
-						種類
-					</td>
-					<td>
-						分類
-					</td>
-					<td>
-						通貨
-					</td>
-					<td>
-						金額
-					</td>
-					<td>
-						口座情報
-					</td>
-					<td>
-						コメント(説明)
-					</td>
+					<td>日付					</td>
+					<td>金の出入り(収入/支出)</td>
+					<td>種類					</td>
+					<td>分類					</td>
+					<td>通貨					</td>
+					<td>金額					</td>
+					<td>口座情報				</td>
+					<td>コメント(説明)		</td>
+				</tr>
+				<tr>
+					<td>2022年8月1日</td>
+					<td>支出</td>
+					<td>固定支出</td>
+					<td>家賃</td>
+					<td>JPY(¥)</td>
+					<td>45,000</td>
+					<td>現金</td>
+					<td>毎月家賃を払う。</td>
 				</tr>
 	
 				<tr>
-					<!-- 日付 -->
-					<td>
-						2022年8月1日
-					</td>
-					<!-- 金の出入り(収入/支出) -->
-					<td>
-						支出
-					</td>
-					<!-- 種類 -->
-					<td>
-						固定支出
-					</td>
-					
-					<!-- 分類 -->
-					<td>
-						家賃
-					</td>
-					
-					<!-- 通貨 -->
-					<td>
-						JPY(¥)
-					</td>
-	
-					<!-- 金額 -->
-					<td>
-						45,000
-					</td>
-	
-					<!-- 口座情報 -->
-					<td>
-						現金
-					</td>
-	
-					<!-- コメント(説明) -->				
-					<td>
-						毎月家賃を払う。
-					</td>
+					<td>2022年8月2日</td>
+					<td>収入</td>
+					<td>金融収入</td>
+					<td>配当金</td>
+					<td>USD($)</td>
+					<td>0.59</td>
+					<td>나무증권 205-05-540966</td>
+					<td>米国の企業「アップル(AAPL)」の配当金。</td>
 				</tr>
-	
+			</table>
+		</div>		
+		<!-- Sample END -->
+		
+		<div style="margin:5%;" >
+			List of your tanasactions from accountbooks.
+
+			<table border="1">
 				<tr>
-					<!-- 日付 -->
-					<td>
-						2022年8月2日
-					</td>
-					<!-- 金の出入り(収入/支出) -->
-					<td>
-						収入
-					</td>
-					<!-- 種類 -->
-					<td>
-						金融収入
-					</td>
-					
-					<!-- 分類 -->
-					<td>
-						配当金
-					</td>
-					
-					<!-- 通貨 -->
-					<td>
-						USD($)
-					</td>
-	
-					<!-- 金額 -->
-					<td>
-						0.59
-					</td>
-	
-					<!-- 口座情報 -->
-					<td>
-						나무증권 205-05-540966
-					</td>
-	
-					<!-- コメント(説明) -->				
-					<td>
-						米国の企業「アップル(AAPL)」の配当金。
-					</td>
-				</tr>
+					<th>日付</th>
+					<th>金の出入り(収入/支出)</th>
+					<th>種類</th>
+					<th>分類</th>
+					<th>通貨</th>
+					<th>金額</th>
+					<th>口座情報</th>
+					<th>コメント(説明)</th>
+				</tr>		
+				<c:forEach var="record" items="${recordOfTransactions}">
+					<tr>
+						<td>1</td>	<!-- 日付 -->
+						<td>2</td>	<!-- 金の出入り(収入/支出) -->
+						<td>3</td>	<!-- 種類 -->
+						<td>4</td>	<!-- 分類 -->
+						<td>5</td>	<!-- 通貨 -->
+						<td>6</td>	<!-- 金額 -->
+						<td>7</td>	<!-- 口座情報 -->
+						<td>8</td><!-- コメント(説明)	-->
+					</tr>
+		
+
+				</c:forEach>		
 			</table>
 		</div>		
 
 		<div style="margin:5%;" >
-			insert of accounts.
+			insert your transactions in accountbooks.
 			<form name="manageAccountBook" method="post" action="/accountBook/manageTheRecordOfTransactions">
 				<table border="1" >
 					<tr>
@@ -192,9 +149,14 @@
 	
 						<!-- 口座情報 -->
 						<td>
-							<select name="accountIdx">
-								<option value="1">[Korea] 나무증권 205-05-540966</option>
-								<option value="2">[Japan] 三菱UFJ銀行 060540</option>
+							<select id="userBankAccountList" name="userBankAccountIdx"> 
+								<c:forEach var="userBank" items="${userBankAccountList}">
+									<option value="${userBank.accountIdx}">
+										${userBank.bankName}
+										_${userBank.bankBranchName}
+										_${userBank.accountNumber}										
+									</option>
+								</c:forEach>
 							</select>
 						</td>
 	
