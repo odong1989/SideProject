@@ -1,7 +1,9 @@
 package com.assetcoach.main.accountBook.dto;
 
+
 public class RecordOfTransactionsDto {
-	private int    accountIdx;					//, account_idx integer
+	private int userIdx; 
+	private int accountIdx;					//, account_idx integer
 	private int accountNumber;				//, account_number character varying(100)
 	private String typeOfTransactions;			//, type_of_transactions character(3)
 	private String detailTypeOfTransactions;	//, detail_type_of_transactions character(7)
@@ -11,6 +13,12 @@ public class RecordOfTransactionsDto {
 	private String dateOfTraiding; 				//, date_of_traiding timestamp(6) without time zone
 	private String contents;					//, contents character varying(300)
 
+	public int getUserIdx() {
+		return userIdx;
+	}
+	public void setUserIdx(int userIdx) {
+		this.userIdx = userIdx;
+	}
 	public int getAccountIdx() {
 		return accountIdx;
 	}

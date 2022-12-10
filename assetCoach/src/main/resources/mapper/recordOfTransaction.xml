@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recordOfTransactionMapper">
+	<insert id="addRecordDepositAndWithdrawal" 
+			parameterType="com.assetcoach.main.accountBook.dto.RecordOfTransactionsDto">						   
+		INSERT 
+		INTO assetcoach.record_of_transactions( 
+		    account_idx         
+		    , account_number
+		    , user_idx            
+		    , type_of_transactions      
+		    , detail_type_of_transactions  
+		    , name_of_transaction          
+		    , currency_type                
+		    , purchase                     
+		    , date_of_traiding             
+		    , contents                     
+		    , rec_create_user_idx          
+		    , rec_create_date              
+		    , logical_del_flag             
+		) 
+		VALUES ( 
+		    #{accountIdx}            		<!-- account_idx -->         
+		    , #{accountNumber}    			<!-- account_number -->          
+		    , #{userIdx}	  
+		    , #{typeOfTransactions}         <!-- type_of_transactions -->
+		    , #{detailTypeOfTransactions}	<!-- detail_type_of_transactions -->
+		    , #{nameOfTransaction}  		<!-- name_of_transaction -->
+		    , #{currencyType}				<!-- currency_type -->
+			, #{purchase}					<!-- purchase -->
+		    , TO_TIMESTAMP(#{dateOfTraiding}, 'YYYY-MM-DD ')	<!-- date_of_traiding -->
+		    , #{contents}					<!-- contents -->
+		    , #{userIdx}					<!-- rec_create_user_idx -->
+		    , NOW()							<!-- rec_create_date -->
+			,'0'							<!-- logical_del_flag -->
+		)
+	</insert>
+	
+	<select id="listOfRecordOfTransaction" 
+			resultType="com.assetcoach.main.accountBook.dto.RecordOfTransactionsDto">						   
+		SELECT
+		    account_idx   					as accountIdx         	
+		    , account_number                as accountNumber   		
+		    , type_of_transactions          as typeOfTransactions  
+		    , detail_type_of_transactions   as detailTypeOfTransactions   
+		    , name_of_transaction           as nameOfTransaction
+		    , currency_type                 as currencyType     
+		    , purchase                      as purchase         
+		    , date_of_traiding              as dateOfTraiding   
+		    , contents                      as contents         
+		FROM
+		    assetcoach.record_of_transactions 
+		WHERE
+		    user_idx = #{userIdx}
+		and 
+			logical_del_flag = '0'
+		ORDER BY
+		    type_of_transactions ASC;
+	</select>
+</mapper>

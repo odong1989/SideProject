@@ -38,11 +38,13 @@ public class AccountBookController {
 			
 			int userIdx = (Integer) httpSession.getAttribute("userIdx");
 			List<AccountDto> userBankAccountList = accountManageService.bankAccountOfUser( userIdx );
+			List<RecordOfTransactionsDto> listOfRecordOfTransaction = accountBookService.listOfRecordOfTransaction(userIdx);
 			
 			model.addAttribute("userEmail", httpSession.getAttribute("userEmail") );
 			model.addAttribute("userIdx", httpSession.getAttribute("userIdx") );
 			model.addAttribute("userBankAccountList", userBankAccountList );
-			
+			model.addAttribute("listOfRecordOfTransaction", listOfRecordOfTransaction );
+						
 			System.out.println("AccountBookController-move to recordDepositAndWithdrawal");
 			return "/accountBook/recordDepositAndWithdrawal";
 
@@ -55,15 +57,15 @@ public class AccountBookController {
 	}
 
 	@RequestMapping(value="addRecordDepositAndWithdrawal", method= RequestMethod.POST)
-	public String manageTheRecordOfTransactions(RecordOfTransactionsDto RecordOfTransactionsDto, Model model, HttpServletRequest httpServletRequest) throws Exception {
+	public String manageTheRecordOfTransactions(RecordOfTransactionsDto recordOfTransactionsDto, Model model, HttpServletRequest httpServletRequest) throws Exception {
 		System.out.println("AccountBookController-addRecordDepositAndWithdrawal");
 	
 		HttpSession httpSession = httpServletRequest.getSession();
 		
 		if(httpSession.getAttribute("userEmail")!=null){
 			
-			//
-
+			//save to DB
+			accountBookService.addRecordDepositAndWithdrawal(recordOfTransactionsDto);
 			
 			//prepare the jsp page data
 			int userIdx = (Integer) httpSession.getAttribute("userIdx");

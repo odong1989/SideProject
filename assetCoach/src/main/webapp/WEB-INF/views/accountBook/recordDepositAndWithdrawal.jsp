@@ -57,16 +57,16 @@
 					<th>口座情報</th>
 					<th>コメント(説明)</th>
 				</tr>		
-				<c:forEach var="record" items="${recordOfTransactions}">
+				<c:forEach var="record" items="${listOfRecordOfTransaction}">
 					<tr>
-						<td>1</td>	<!-- 日付 -->
-						<td>2</td>	<!-- 金の出入り(収入/支出) -->
-						<td>3</td>	<!-- 種類 -->
-						<td>4</td>	<!-- 分類 -->
-						<td>5</td>	<!-- 通貨 -->
-						<td>6</td>	<!-- 金額 -->
-						<td>7</td>	<!-- 口座情報 -->
-						<td>8</td><!-- コメント(説明)	-->
+						<td>${record.dateOfTraiding}</td>	<!-- 日付 -->
+						<td>${record.typeOfTransactions}</td>	<!-- 金の出入り(収入/支出) -->
+						<td>${record.detailTypeOfTransactions}</td>	<!-- 種類 -->
+						<td>${record.nameOfTransaction}</td>	<!-- 分類 -->
+						<td>${record.currencyType}</td>	<!-- 通貨 -->
+						<td>${record.purchase}</td>	<!-- 金額 -->
+						<td>${record.accountNumber}</td>	<!-- 口座情報 -->
+						<td>${record.contents}</td><!-- コメント(説明)	-->
 					</tr>
 		
 
