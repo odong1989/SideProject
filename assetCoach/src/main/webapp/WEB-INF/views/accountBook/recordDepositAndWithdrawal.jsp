@@ -76,7 +76,7 @@
 
 		<div style="margin:5%;" >
 			insert your transactions in accountbooks.
-			<form name="manageAccountBook" method="post" action="/accountBook/manageTheRecordOfTransactions">
+			<form action="/main/accountBook/addRecordDepositAndWithdrawal" method="post">
 				<table border="1" >
 					<tr>
 						<td>日付</td>
@@ -90,46 +90,47 @@
 					</tr>
 					<tr>
 						<!-- START of submit datas  -->
+						<input type="hidden" name="userIdx" value="${userIdx}">
 						<!-- 日付 -->
 						<td>
 							<input type="date" name="dateOfTraiding">
 						</td>
 						
-						<!-- 金の出入り(収入/支出) -->
+						<!-- 金の出入り(収入/支出) typeTheImcomeOrPay -->
 						<td>
-							<select name="typeTheImcomeOrPay">
-								<option value="1">収入</option>  <!-- value="1" recieve -->
-								<option value="2">支出</option>  <!--value="2" pay -->
+							<select name="typeOfTransactions">
+								<option value="1">収入</option>  <!-- value="1" : income -->
+								<option value="2">支出</option>  <!--value="2"  : pay -->
 							</select>
 						</td>
 				
 						<!-- 種類 -->
 						<td>
-							<select name="typeDetailsOfImcomeOrPay"><!-- DB 追加必要 -->
+							<select name="detailTypeOfTransactions"><!-- DB 追加必要 -->
 								<!-- 種類1‐収入関連 -->
-								<option value="1">勤労収入</option> <!-- value="1" earnedIncome -->
-								<option value="2">金融収入</option> <!-- value="2" financialIncome -->
+								<option value="101">勤労収入</option> 		<!-- earnedIncome -->
+								<option value="102">金融収入</option>		<!-- financialIncome -->
 								
 								<!-- 種類2‐支出関連 -->
-								<option value="1">固定支出</option> <!-- value="1" fixedExpense -->
-								<option value="2">変動支出</option> <!-- value="2" variableExpense -->
+								<option value="501">固定支出</option> 		<!-- fixedExpense -->
+								<option value="502">変動支出</option> 		<!-- variableExpense -->
 							</select>
 						</td>
 	
 						<!-- 分類 -->
 						<td>
-							<select name="3"><!-- DB 追加必要 -->
+							<select name="nameOfTransaction"><!-- DB 追加必要 -->
 								<!-- 種類1‐収入関連 -->
-								<option vlaue="incomeFromSalary">会社給料収入</option>
-								<option vlaue="incomeFromInterests">預金利子収入</option>
-								<option vlaue="incomeFromDividends">配当収入</option>
+								<option vlaue="101-001">会社給料収入</option>	<!-- vlaue="incomeFromSalary" -->
+								<option vlaue="102-001">預金利子収入</option>		<!-- vlaue="incomeFromInterests" -->
+								<option vlaue="102-002">配当収入</option>			<!-- vlaue="incomeFromDividends" -->
 								
 								<!-- 種類2‐支出関連 -->
-								<option vlaue="payToMonthlyRent">家賃</option>
-								<option vlaue="payToSubscription">購讀料</option>
-								<option vlaue="payToInsurance">保険料</option>
-								<option vlaue="payToBookBudget">図書費</option>
-								<option vlaue="payToFoodExpenses">食費</option>
+								<option vlaue="501-001">家賃</option>			<!-- vlaue="payToMonthlyRent" -->
+								<option vlaue="501-002">購讀料</option>		<!-- vlaue="payToSubscription" -->
+								<option vlaue="501-003">保険料</option>			<!-- vlaue="payToInsurance" -->
+								<option vlaue="502-001">図書費</option>			<!-- vlaue="payToBookBudget" -->
+								<option vlaue="502-002">食費</option>			<!-- vlaue="payToFoodExpenses" -->
 							</select>
 						</td>
 						
@@ -149,9 +150,11 @@
 	
 						<!-- 口座情報 -->
 						<td>
-							<select id="userBankAccountList" name="userBankAccountIdx"> 
+							<!-- <select id="userBankAccountList" name="userBankAccountIdx">  -->
+							<select id="userBankAccountList" name="accountIdx"> 
 								<c:forEach var="userBank" items="${userBankAccountList}">
-									<option value="${userBank.accountIdx}">
+									<option value="${userBank.accountIdx}" >
+										<!-- <input type="hidden" name="accountNumber" value="${accountNumber}"> -->
 										${userBank.bankName}
 										_${userBank.bankBranchName}
 										_${userBank.accountNumber}										
@@ -166,7 +169,9 @@
 						</td>	
 					</tr>
 				</table>
-				<button type="submit" value="recordDepositAndWithdrawal"> insert</button>
+				<button type="submit"> 
+					insert to accountBook.
+				</button>
 			</form>
 		</div>
 	</body>

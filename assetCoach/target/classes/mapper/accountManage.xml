@@ -8,6 +8,7 @@
 			resultType="com.assetcoach.main.accountManager.dto.AccountDto">				   
 		select
 			user_idx as userIdx
+			, account_idx as accountIdx
 			, bank_idx as bankIdx
 			, bank_branch_idx as bankBranchIdx
 			,(select DISTINCT

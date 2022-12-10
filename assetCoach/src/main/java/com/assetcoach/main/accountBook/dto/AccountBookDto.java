@@ -5,11 +5,10 @@ public class AccountBookDto {
 	//DB table name : bank
 	private int bankIdx;
 	private int branchIdx;
-	//private String nation;
-	//private String name;
-	//private String branchName;
+
+	private String typeOfTransactions;			//type_of_transactions           char(1)       	NULL,
+	private String detailTypeOfTransactions;	//detail_type_of_transactions    char(1)       	NULL,
 	
-	//DB table name : record_of_transactions
 	private int accountIdx; 
 	private int accountNumber;
 	private int userIdx; 	
@@ -22,6 +21,19 @@ public class AccountBookDto {
 	private String purchase;
 	private String dateOfTraiding; 
 	private String contents;
+	
+	public String getTypeOfTransactions() {
+		return typeOfTransactions;
+	}
+	public void setTypeOfTransactions(String typeOfTransactions) {
+		this.typeOfTransactions = typeOfTransactions;
+	}
+	public String getDetailTypeOfTransactions() {
+		return detailTypeOfTransactions;
+	}
+	public void setDetailTypeOfTransactions(String detailTypeOfTransactions) {
+		this.detailTypeOfTransactions = detailTypeOfTransactions;
+	}
 	public int getBankIdx() {
 		return bankIdx;
 	}
