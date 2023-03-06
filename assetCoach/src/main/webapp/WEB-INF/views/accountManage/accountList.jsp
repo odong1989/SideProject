@@ -15,14 +15,14 @@
 			<c:when test="${not empty userEmail}">
 				UserID : ${userEmail}			
 				<!-- 
-				<button type="button" onclick="location.href='/main/login/loginForm'" >
+				<button type="button" onclick="location.href='/assetcoach/login/loginForm'" >
 					ログアウトする
 				</button>
 				 -->
 			</c:when>
 			<c:otherwise>
 				ログインしてください。		
-				<button type="button" onclick="location.href='/main/login/loginForm'" >
+				<button type="button" onclick="location.href='/assetcoach/login/loginForm'" >
 					ログインする
 				</button>
 			</c:otherwise>			
@@ -66,7 +66,7 @@
 		新しい口座を登録します。
 
 		<br />
-		<form action="/main/accountManage/addUserBankAccount" method="post">
+		<form action="/assetcoach/accountManage/addUserBankAccount" method="post">
 			<table border="1" style="margin:5%;" >
 				<tr>
 					<td>金融機関の名前</td>

@@ -10,26 +10,26 @@
 			<c:when test="${not empty loginUser.userEmail}">
 				UserID : ${loginUser.userEmail}			
 				<!-- 
-				<button type="button" onclick="location.href='/main/login/loginForm'" >
+				<button type="button" onclick="location.href='/assetcoach/login/loginForm'" >
 					ログアウトする
 				</button>
 				 -->
 			</c:when>
 			<c:otherwise>
 				ログインしてください。		
-				<button type="button" onclick="location.href='/main/login/loginForm'" >
+				<button type="button" onclick="location.href='/assetcoach/login/loginForm'" >
 					ログインする
 				</button>
 			</c:otherwise>			
 		</c:choose>
 		
 		<!-- move to recordDepositAndWithdrawal	-->
-		<button type="button" onclick="location.href='/main/accountBook/recordDepositAndWithdrawal'" >
+		<button type="button" onclick="location.href='/assetcoach/accountBook/recordDepositAndWithdrawal'" >
 			家計簿を登録する
 		</button>
 
 		<!-- move to accountManage accountList -->
-		<button type="button" onclick="location.href='/main/accountManage/accountList'" >
+		<button type="button" onclick="location.href='/assetcoach/accountManage/accountList'" >
 			口座を登録する。
 		</button>
 		
@@ -169,7 +169,7 @@
 							登録した資産がないです。
 							<br/>口座を登録すれば資産が表示されます。
 							<br/><!-- move to accountManage accountList -->
-								<button type="button" onclick="location.href='/main/accountManage/accountList'" >
+								<button type="button" onclick="location.href='/assetcoach/accountManage/accountList'" >
 									口座を登録する。
 								</button>
 						</td>

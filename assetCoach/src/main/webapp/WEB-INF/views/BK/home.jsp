@@ -13,7 +13,7 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-	<button onclick="location.href='/main/login/loginForm'" type="button">
+	<button onclick="location.href='/assetcoach/login/loginForm'" type="button">
 		move to LoginForm pages.
 	</button>
 </body>

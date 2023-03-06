@@ -76,7 +76,7 @@
 
 		<div style="margin:5%;" >
 			insert your transactions in accountbooks.
-			<form action="/main/accountBook/addRecordDepositAndWithdrawal" method="post">
+			<form action="/assetcoach/accountBook/addRecordDepositAndWithdrawal" method="post">
 				<table border="1" >
 					<tr>
 						<td>日付</td>
@@ -172,6 +172,28 @@
 				<button type="submit"> 
 					insert to accountBook.
 				</button>
+				
+				<section class='cal'>
+  <div class='header'>
+    <button class="nav-btn go-prev" onclick='prevMonth()'>&lt;</button>
+    <div class="year-month"></div>
+    <button class="nav-btn go-next" onclick='nextMonth()'>&gt;</button>
+    <button class="nav-btn go-today" onclick='goToday()'>Today</button>
+   </div>
+   <div class='main'>
+     <div class="days">
+       <div class="day">SUN</div>
+       <div class="day">MON</div>
+       <div class="day">TUE</div>
+       <div class="day">WED</div>
+       <div class="day">THU</div>
+       <div class="day">FRI</div>
+       <div class="day">SAT</div>
+     </div>
+     <div class="dates"></div>
+  </div>
+</section>
+				
 			</form>
 		</div>
 	</body>

@@ -5,7 +5,7 @@
 <html>
 	<body>
 		LoginForm pages.
-		<form name="loginForm" method="post" action="/main/login/loginCheck">
+		<form name="loginForm" method="post" action="/assetcoach/login/loginCheck">
 			<table>
 				<tr>
 					<td>
