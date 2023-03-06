@@ -1,0 +1,17 @@
+.screenFull {
+	width: 1500px;
+	height: 800px;
+	background-color: red;
+}
+.screenLeft {
+	width: 650px;
+	height: 800px;
+	float: left;
+	background-color: #444444;
+}
+.screenRight {
+	width: 850px;
+	height: 800px;
+	float: right;
+	background-color: #11ff13;
+}
