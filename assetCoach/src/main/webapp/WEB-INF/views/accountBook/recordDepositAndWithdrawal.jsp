@@ -2,8 +2,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page session="false" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-
-<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
@@ -11,7 +9,7 @@
 		<!-- calendar css -->	
 		<link href="${pageContext.request.contextPath}/resources/css/calendar.css?ver=1" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/resources/css/common.css?ver=2" rel="stylesheet" type="text/css">
-
+	</head>
 	<body>
 		<div>
 			recordDepositAndWithdrawal page.
@@ -165,6 +163,9 @@
 							<td>
 								<input type="date" name="dateOfTraiding" style="width:123px;">
 							</td>
+							
+							
+							
 							
 							<!-- 収入/支出 typeTheImcomeOrPay -->
 							<td>
