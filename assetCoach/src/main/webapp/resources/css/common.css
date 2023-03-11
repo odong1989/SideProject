@@ -1,21 +1,22 @@
 .screenFull {
-	width: 1500px;
-	height: 800px;
+	width:  1550px;
+	//height: 700px;
 	//background-color: red;
 }
+
 .screenLeft {
 	width: 650px;
-	height: 800px;
 	float: left;
+	//height: 1200px;
 	//background-color: #444444;
 }
+
 .screenRight {
-	width: 850px;
-	height: 800px;
+	width: 900px;
 	float: right;
+	//height: 1200px;
 	//background-color: #11ff13;
 }
-
 
 .wrap{
 	width: 100%;
@@ -32,16 +33,16 @@
 
 .SideBar{
 	width: 10%;
-	height: 600px;
 	background-color: #FFBB00;
 	float: left;
+	//height: 600px;
 }
 
 .page_content{
 	width: 90%;
-	height: 600px;
-	background-color: #EAEAEA;
 	float: left;
+	//height: 600px;
+	//background-color: #EAEAEA;
 }
 
 .Header{

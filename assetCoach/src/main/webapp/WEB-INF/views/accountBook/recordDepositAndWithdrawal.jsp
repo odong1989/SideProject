@@ -8,7 +8,7 @@
 		
 		<!-- calendar css -->	
 		<link href="${pageContext.request.contextPath}/resources/css/calendar.css?ver=1" rel="stylesheet" type="text/css">
-		<link href="${pageContext.request.contextPath}/resources/css/common.css?ver=2" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/resources/css/common.css?ver=3" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div>
@@ -46,26 +46,35 @@
 					<div style="font-size:35px;">
 						year month accountbookList.					
 					</div>
+					<div style="overflow-y: scroll; height:400px;">
 						<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
 						<tr>
-							<th style="width:125px;"> 日付</th>
-							<th style="width:55px;">  収入/支出</th>
+							<th style="width:75px;"> 選択</th>
+							<th style="width:80px;"> 日付</th>
+							<th style="width:75px;">  収入/支出</th>
 							<th style="width:120px;"> 種類</th>
-							<th style="width:120px;"> 分類</th>
+							<th style="width:150px;"> 分類</th>
 							<th style="width:100px;"> 通貨</th>
 							<th style="width:100px;"> 金額</th>
 							<!-- <th>口座情報</th> -->
 							<th style="width:200px;"> コメント</th>
+							<th style="width:50px;"> 行修正</th>
+							<th style="width:50px;"> 行削除</th>
 						</tr>		
 						<c:forEach var="record" items="${listOfRecordOfTransaction}">
 							<tr>
+								<!-- 選択 -->
+								<td style="text-align: center; font-size: 14px;"> 
+									<input type="checkbox">
+								</td> 
+							
 								<!-- 日付 -->
-								<td style="text-align: center;"> 
-									${fn:substring(record.dateOfTraiding,0,10)} 
+								<td style="text-align: center; font-size: 14px;"> 
+									${fn:substring(record.dateOfTraiding,5,10)} 
 								</td> 
 								
 								<!-- 収入/支出 -->
-								<td style="text-align: center;"> 
+								<td style="text-align: center; font-size: 14px;"> 
 									<c:choose>
 								         <c:when test = "${record.typeOfTransactions eq 'tOT1' }">
 											収入
@@ -80,7 +89,7 @@
 								</td> 
 								
 								<!-- 種類 -->
-								<td style="text-align: center;">
+								<td style="text-align: center; font-size: 14px;">
 									<c:choose>
 								         <c:when test = "${record.detailTypeOfTransactions eq 'dTOT101' }">
 											勤労収入
@@ -103,7 +112,7 @@
 								</td>
 
 								<!-- 分類 -->
-								<td style="text-align: center;"> 
+								<td style="text-align: center; font-size: 14px;"> 
 									<c:choose>
 								         <c:when test = "${record.nameOfTransaction eq '101_0001'}">
 											会社給料収入
@@ -136,14 +145,16 @@
 								         </c:otherwise>
 								    </c:choose>									
 								</td> 
-								<td style="text-align: center;"> ${record.currencyType}						 </td> <!-- 通貨 -->
-								<td style="text-align: right;">  ${record.purchase}							 </td> <!-- 金額 -->
-								<td>${record.contents}</td>														   <!-- コメント(説明)	-->
-								<%-- <td>${record.accountNumber}</td> --%> 				<!-- 口座情報 -->
+								<td style="text-align: center; font-size: 14px;"> ${record.currencyType}						 </td> <!-- 通貨 -->
+								<td style="text-align: right; font-size: 14px;">  ${record.purchase}							 </td> <!-- 金額 -->
+								<td>${record.contents}</td>														  					   <!-- コメント(説明) -->
+								<td><button class="button" style="font-size: 12px;">行修正</button></td>					  			   <!-- 行修正 -->
+								<td><button class="button" style="font-size: 12px;">行削除</button></td>			   					   <!-- 行削除 -->
+								<%-- <td>${record.accountNumber}</td> --%> 																<!-- 口座情報 -->
 							</tr>
 						</c:forEach>		
 					</table>
-	
+				</div>
 				insert your transactions in accountbooks.
 				<form action="/assetcoach/accountBook/addRecordDepositAndWithdrawal" method="post">
 					<table class="table">
