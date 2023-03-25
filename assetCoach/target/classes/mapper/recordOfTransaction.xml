@@ -41,7 +41,8 @@
 	<select id="listOfRecordOfTransaction" 
 			resultType="com.assetcoach.main.accountBook.dto.RecordOfTransactionsDto">						   
 		SELECT
-		    account_idx   					as accountIdx         	
+			record_of_transactions_idx		as recordOfTransactionsIdx
+		    , account_idx   				as accountIdx         	
 		    , account_number                as accountNumber   		
 		    , type_of_transactions          as typeOfTransactions  
 		    , detail_type_of_transactions   as detailTypeOfTransactions   
@@ -59,4 +60,11 @@
 		ORDER BY
 		    type_of_transactions ASC;
 	</select>
+	
+	<delete id="deleteRecordDepositAndWithdrawal">
+		DELETE FROM
+    		assetcoach.record_of_transactions 
+		WHERE
+    		record_of_transactions_idx = #{recordOfTransactionsIdx}
+	</delete>			
 </mapper>

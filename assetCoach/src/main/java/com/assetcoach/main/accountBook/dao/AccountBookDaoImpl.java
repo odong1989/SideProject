@@ -29,5 +29,11 @@ public class AccountBookDaoImpl implements AccountBookDao{
 	public List<RecordOfTransactionsDto> listOfRecordOfTransaction(int userIdx) {
 		return SqlSessionTemplate.selectList("recordOfTransactionMapper.listOfRecordOfTransaction",userIdx);
 	}
+
+	@Override
+	public void deleteRecordDepositAndWithdrawal(int recordOfTransactionsIdx) {
+//		SqlSessionTemplate.delete(String.valueOf(recordOfTransactionsIdx) );
+		SqlSessionTemplate.delete("recordOfTransactionMapper.deleteRecordDepositAndWithdrawal", recordOfTransactionsIdx);
+	}
 	
 }

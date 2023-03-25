@@ -8,5 +8,6 @@ import com.assetcoach.main.accountBook.dto.RecordOfTransactionsDto;
 public interface AccountBookDao {
 	public void manageTheRecordOfTransactions(AccountBookDto accountBookDto) throws Exception;
 	public void addRecordDepositAndWithdrawal(RecordOfTransactionsDto recordOfTransactionsDto);
+	public void deleteRecordDepositAndWithdrawal(int recordOfTransactionsIdx);
 	public List<RecordOfTransactionsDto> listOfRecordOfTransaction(int userIdx);
 }

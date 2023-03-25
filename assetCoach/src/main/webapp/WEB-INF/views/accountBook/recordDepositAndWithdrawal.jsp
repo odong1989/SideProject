@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <%@ page session="false" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -9,52 +10,76 @@
 		<!-- calendar css -->	
 		<link href="${pageContext.request.contextPath}/resources/css/calendar.css?ver=1" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/resources/css/common.css?ver=3" rel="stylesheet" type="text/css">
+
 		<script>
-		document.addEventListener('DOMContentLoaded', () => {
-			  // Functions to open and close a modal
-			  function openModal($el) {
+			function confirm_delete(recordOfTransactionsIdx){
+				if(confirm("delete this row of accountbook?") == true){
+					$.ajax({
+						type     : "POST",
+						url      : "/assetcoach/accountBook/deleteRecordDepositAndWithdrawal",
+						data     : {recordOfTransactionsIdx},
+						dataType : "JSON",
+						success  : function(result){
+							if(result == '1'){
+								alert("success delete the row");
+								location.reload();								
+							}
+						},
+						error    : function(request, status,error){
+							console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+							alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+						}
+					})
+				}
+				else{
+					alert("delete canceled");	
+				}
+			}
+		
+		//modal JS
+			document.addEventListener('DOMContentLoaded', () => {
+				// Functions to open and close a modal
+			  	function openModal($el) {
 			    $el.classList.add('is-active');
-			  }
+			}
 
-			  function closeModal($el) {
-			    $el.classList.remove('is-active');
-			  }
+			function closeModal($el) {
+				$el.classList.remove('is-active');
+			}
 
-			  function closeAllModals() {
+			function closeAllModals() {
 			    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
 			      closeModal($modal);
 			    });
-			  }
+			}
 
-			  // Add a click event on buttons to open a specific modal
-			  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-			    const modal = $trigger.dataset.target;
-			    const $target = document.getElementById(modal);
-
+			// Add a click event on buttons to open a specific modal
+			(document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+				const modal = $trigger.dataset.target;
+			    const $target = document.getElementById(modal);			    
 			    $trigger.addEventListener('click', () => {
 			      openModal($target);
 			    });
-			  });
+			});
 
-			  // Add a click event on various child elements to close the parent modal
-			  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+			// Add a click event on various child elements to close the parent modal
+			(document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
 			    const $target = $close.closest('.modal');
 
 			    $close.addEventListener('click', () => {
 			      closeModal($target);
 			    });
-			  });
+			});
 
-			  // Add a keyboard event to close all modals
-			  document.addEventListener('keydown', (event) => {
+			// Add a keyboard event to close all modals
+			document.addEventListener('keydown', (event) => {
 			    const e = event || window.event;
 
 			    if (e.keyCode === 27) { // Escape key
 			      closeAllModals();
 			    }
-			  });
 			});
-		
+		});
 		</script>
 
 	</head>
@@ -110,8 +135,8 @@
 							<th style="width:100px;"> 金額</th>
 							<!-- <th>口座情報</th> -->
 							<th style="width:200px;"> コメント</th>
-							<th style="width:50px;"> 行修正</th>
-							<th style="width:50px;"> 行削除</th>
+							<th style="width:50px;"> 修正</th>
+							<th style="width:50px;"> 削除</th>
 						</tr>		
 						<c:forEach var="record" items="${listOfRecordOfTransaction}">
 							<tr>
@@ -203,16 +228,26 @@
 								<td><!-- 行修正 -->
 									<button class="js-modal-trigger" 
 											data-target="modal_accountbook_modify"
- 											style="font-size: 12px;">
-										行修正											
+ 											style="font-size: 12px;"
+ 											value=${record}>
+										修正											
 									</button>
 								</td>					  			  
 								<td><!-- 行削除 -->
+									<!-- 
 									<button class="js-modal-trigger" 
 											data-target="modal_accountbook_delete"
- 											style="font-size: 12px;">
-										行削除
+ 											style="font-size: 12px;"
+ 											value=${record.recordOfTransactionsIdx}>
+										削除
 									</button>
+									-->
+									<button onclick="confirm_delete(this.value)"
+											style="font-size: 12px;"
+ 											value="${record.recordOfTransactionsIdx}">
+										削除
+									</button>
+
 								</td>
 								<%-- <td>${record.accountNumber}</td> --%> 																<!-- 口座情報 -->
 							</tr>
@@ -354,7 +389,7 @@
 	   		</header>
    			
    			<section class="modal-card-body">
-				delete datas. are you okay?
+				delete Z ${record.accountIdx} Z datas. are you okay?
         	</section>
 
     		<footer class="modal-card-foot">

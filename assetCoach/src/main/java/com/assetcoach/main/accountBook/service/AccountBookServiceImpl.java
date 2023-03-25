@@ -29,5 +29,10 @@ public class AccountBookServiceImpl implements AccountBookService{
 	public List<RecordOfTransactionsDto> listOfRecordOfTransaction(int userIdx){
 		return accountBookDao.listOfRecordOfTransaction(userIdx);
 	}
+
+	@Override
+	public void deleteRecordDepositAndWithdrawal(int recordOfTransactionsIdx) {
+		accountBookDao.deleteRecordDepositAndWithdrawal(recordOfTransactionsIdx);
+	}
 	
 }

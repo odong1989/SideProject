@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.assetcoach.main.accountBook.dto.AccountBookDto;
 import com.assetcoach.main.accountBook.dto.RecordOfTransactionsDto;
@@ -83,11 +85,41 @@ public class AccountBookController {
 		else {
 			System.out.println("AccountManageController-accountList-login failed");
 			return "/login/loginForm";			
-		}	
-	
-	
+		}		
 	}
 		
+	@RequestMapping(value="deleteRecordDepositAndWithdrawal", method= RequestMethod.POST)
+	@ResponseBody
+	public String deleteRecordOfTransactions(int recordOfTransactionsIdx, Model model, HttpServletRequest httpServletRequest) throws Exception {
+		System.out.println("AccountBookController-deleteRecordOfTransactions");
+		
+		HttpSession httpSession = httpServletRequest.getSession();
+		
+		if(httpSession.getAttribute("userEmail")!=null){
+			//save to DB
+			accountBookService.deleteRecordDepositAndWithdrawal(recordOfTransactionsIdx);
+			
+			//prepare the jsp page data
+			int userIdx = (Integer) httpSession.getAttribute("userIdx");
+			List<AccountDto> userBankAccountList = accountManageService.bankAccountOfUser( userIdx );
+			
+			model.addAttribute("userEmail", httpSession.getAttribute("userEmail") );
+			model.addAttribute("userIdx", httpSession.getAttribute("userIdx") );
+			model.addAttribute("userBankAccountList", userBankAccountList );
+
+			System.out.println("AccountBookController-complete deleteRecordOfTransactions");
+			//System.out.println("AccountBookController-move to recordDepositAndWithdrawal");
+			return "1";
+		}		
+
+		else {
+			System.out.println("AccountManageController-accountList-login failed");
+			return null;		
+			//return "/login/loginForm";			
+		}
+	}
+	
+	
 	/*
 	@RequestMapping(value="manageTheRecordOfTransactions", method= RequestMethod.POST)
 	public String manageTheRecordOfTransactions(AccountBookDto accountBookDto) throws Exception {
