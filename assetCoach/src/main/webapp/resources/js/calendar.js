@@ -1,5 +1,9 @@
 let date = new Date();
 
+//value check alert
+//alert( document.getElementById('jsTest').value );
+//alert( document.getElementById('jsTest2').value );
+
 const renderCalender = () => {
   const viewYear = date.getFullYear();
   const viewMonth = date.getMonth();
@@ -36,11 +40,21 @@ const renderCalender = () => {
     const condition = i >= firstDateIndex && i < lastDateIndex + 1
                       ? 'this'
                       : 'other';
-    dates[i] = `<div class="date"><span class=${condition}>${date}</span></div>`;
+    dates[i] = `<div class="date">
+    				<span class=${condition}>
+    					${date}
+    				</span></br>
+    				<span style="letter-spacing: -0.2em;font-size: xx-small;">
+						KRW -20,000
+    				</span></br>
+    				<span style="letter-spacing: -0.2em;font-size: xx-small;">
+						JPY -4,500
+    				</span></br>
+    			</div>`;
   });
 
   document.querySelector('.dates').innerHTML = dates.join('');
-
+  
   const today = new Date();
   if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
     for (let date of document.querySelectorAll('.this')) {

@@ -9,8 +9,59 @@
 		<!-- calendar css -->	
 		<link href="${pageContext.request.contextPath}/resources/css/calendar.css?ver=1" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/resources/css/common.css?ver=3" rel="stylesheet" type="text/css">
+		<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			  // Functions to open and close a modal
+			  function openModal($el) {
+			    $el.classList.add('is-active');
+			  }
+
+			  function closeModal($el) {
+			    $el.classList.remove('is-active');
+			  }
+
+			  function closeAllModals() {
+			    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+			      closeModal($modal);
+			    });
+			  }
+
+			  // Add a click event on buttons to open a specific modal
+			  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+			    const modal = $trigger.dataset.target;
+			    const $target = document.getElementById(modal);
+
+			    $trigger.addEventListener('click', () => {
+			      openModal($target);
+			    });
+			  });
+
+			  // Add a click event on various child elements to close the parent modal
+			  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+			    const $target = $close.closest('.modal');
+
+			    $close.addEventListener('click', () => {
+			      closeModal($target);
+			    });
+			  });
+
+			  // Add a keyboard event to close all modals
+			  document.addEventListener('keydown', (event) => {
+			    const e = event || window.event;
+
+			    if (e.keyCode === 27) { // Escape key
+			      closeAllModals();
+			    }
+			  });
+			});
+		
+		</script>
+
 	</head>
 	<body>
+		<input type=hidden id="jsTest" name="jsTest" value="${userEmail}">
+		<input type=hidden id="jsTest2" name="jsTest2" value="${listOfRecordOfTransaction}">
+
 		<div>
 			recordDepositAndWithdrawal page.
 		</div>
@@ -37,8 +88,9 @@
 				    	</div>
 			   			<div class="dates"></div>
 			    	</div>
-		  		</div>
-				<script src="${pageContext.request.contextPath}/resources/js/calendar.js?ver=2" type="text/javascript"></script>			
+		  		</div>	  		
+				<script src="${pageContext.request.contextPath}/resources/js/calendar.js?ver=2" type="text/javascript">
+				</script>			
 			</div>
 	  
 		  	<div class="screenRight">
@@ -148,8 +200,20 @@
 								<td style="text-align: center; font-size: 14px;"> ${record.currencyType}						 </td> <!-- 通貨 -->
 								<td style="text-align: right; font-size: 14px;">  ${record.purchase}							 </td> <!-- 金額 -->
 								<td>${record.contents}</td>														  					   <!-- コメント(説明) -->
-								<td><button class="button" style="font-size: 12px;">行修正</button></td>					  			   <!-- 行修正 -->
-								<td><button class="button" style="font-size: 12px;">行削除</button></td>			   					   <!-- 行削除 -->
+								<td><!-- 行修正 -->
+									<button class="js-modal-trigger" 
+											data-target="modal_accountbook_modify"
+ 											style="font-size: 12px;">
+										行修正											
+									</button>
+								</td>					  			  
+								<td><!-- 行削除 -->
+									<button class="js-modal-trigger" 
+											data-target="modal_accountbook_delete"
+ 											style="font-size: 12px;">
+										行削除
+									</button>
+								</td>
 								<%-- <td>${record.accountNumber}</td> --%> 																<!-- 口座情報 -->
 							</tr>
 						</c:forEach>		
@@ -174,8 +238,6 @@
 							<td>
 								<input type="date" name="dateOfTraiding" style="width:123px;">
 							</td>
-							
-							
 							
 							
 							<!-- 収入/支出 typeTheImcomeOrPay -->
@@ -258,8 +320,48 @@
 					</button>
 				</form>
 			</div>
-
-		</div>  
 		</div>
+	</div>
 	</body>
+
+	<div id="modal_accountbook_modify" class="modal">
+		<div class="modal-background">
+		</div>
+ 		<div class="modal-card">
+   			<header class="modal-card-head">
+     			<p class="modal-card-title">行修正</p>
+     			<button class="delete" aria-label="close"></button>
+	   		</header>
+   			
+   			<section class="modal-card-body">
+   				please insert data for modifys. 
+        	</section>
+
+    		<footer class="modal-card-foot">
+   		 		<button class="button is-success">Modify</button>
+    			<button class="button">Cancel</button>
+    		</footer>
+    	</div>
+	</div>
+	
+	<div id="modal_accountbook_delete" class="modal">
+		<div class="modal-background">
+		</div>
+ 		<div class="modal-card">
+   			<header class="modal-card-head">
+     			<p class="modal-card-title">行削除</p>
+     			<button class="delete" aria-label="close"></button>
+	   		</header>
+   			
+   			<section class="modal-card-body">
+				delete datas. are you okay?
+        	</section>
+
+    		<footer class="modal-card-foot">
+   		 		<button class="button is-success">Delete</button>
+    			<button class="button">Cancel</button>
+    		</footer>
+    	</div>
+	</div>	
+	
 </html>

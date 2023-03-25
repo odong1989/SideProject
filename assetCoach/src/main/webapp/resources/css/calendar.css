@@ -77,11 +77,13 @@ body {
   border-left: 1px solid #333333;
 }
 
+/*date text color(SUN)*/
 .day:nth-child(7n + 1),
 .date:nth-child(7n + 1) {
   color: #D13E3E;
 }
 
+/*date text color(SAT)*/
 .day:nth-child(7n),
 .date:nth-child(7n) {
   color: #396EE2;
