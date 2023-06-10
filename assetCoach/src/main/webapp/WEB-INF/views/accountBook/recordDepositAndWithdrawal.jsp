@@ -362,7 +362,7 @@
 	<div id="modal_accountbook_modify" class="modal">
 		<div class="modal-background">
 		</div>
- 		<div class="modal-card">
+ 		<div class="modal-card" style="width:1000px;">
    			<header class="modal-card-head">
      			<p class="modal-card-title">行修正</p>
      			<button class="delete" aria-label="close"></button>
@@ -370,6 +370,86 @@
    			
    			<section class="modal-card-body">
    				please insert data for modifys. 
+   					<form action="/assetcoach/accountBook/addRecordDepositAndWithdrawal" method="post">
+					<table class="table">
+						<tr>
+							<td style="width:125px;"> 日付</td>
+							<td style="width:55px;">  収入/支出</td>
+							<td style="width:115px;"> 種類</td>
+							<td style="width:120px;"> 分類</td>
+							<td style="width:100px;"> 通貨</td>
+							<td style="width:100px;"> 金額</td>
+							<td style="width:200px;"> コメント</td>
+						</tr>
+						<tr>
+							<!-- START of submit datas  -->
+							<input type="hidden" name="userIdx" value="${userIdx}">
+							<!-- 日付 -->
+							<td>
+								<input type="date" name="dateOfTraiding" style="width:123px;">
+							</td>
+							
+							
+							<!-- 収入/支出 typeTheImcomeOrPay -->
+							<td>
+								<select name="typeOfTransactions">
+									<option value="tOT1">収入</option>  <!-- value="1" : income -->
+									<option value="tOT2">支出</option>  <!-- value="2"  : pay -->
+								</select>
+							</td>
+					
+							<!-- 種類 -->
+							<td>
+								<select name="detailTypeOfTransactions" style="width:112px;"><!-- DB 追加必要 -->
+									<!-- dTOT : detailTypeOfTransactions -->
+									<!-- 種類1‐収入関連 -->
+									<option value="dTOT101">勤労収入</option> 		<!-- earnedIncome -->
+									<option value="dTOT102">金融収入</option>		<!-- financialIncome -->
+									
+									<!-- 種類2‐支出関連 -->
+									<option value="dTOT501">固定支出</option> 		<!-- fixedExpense -->
+									<option value="dTOT502">変動支出</option> 		<!-- variableExpense -->
+								</select>
+							</td>
+		
+							<!-- 分類 -->
+							<td>
+								<select name="nameOfTransaction" style="width:115px;"><!-- DB 追加必要 -->
+									<!-- 種類1‐収入関連 -->
+									<option value="101_0001">会社給料収入</option>	<!-- vlaue="incomeFromSalary" -->
+									<option value="102_0001">預金利子収入</option>	<!-- vlaue="incomeFromInterests" -->
+									<option value="102_0002">配当収入</option>		<!-- vlaue="incomeFromDividends" -->
+									
+									<!-- 種類2‐支出関連 -->
+									<option value="501_0001">家賃</option>			<!-- vlaue="payToMonthlyRent" -->
+									<option value="501_0002">購讀料</option>			<!-- vlaue="payToSubscription" -->
+									<option value="501_0003">保険料</option>			<!-- vlaue="payToInsurance" -->
+									<option value="502_0001">図書費</option>			<!-- vlaue="payToBookBudget" -->
+									<option value="502_0002">食費</option>			<!-- vlaue="payToFoodExpenses" -->
+								</select>
+							</td>
+							
+							<!-- 通貨 -->
+							<td>
+								<select name="currencyType" style="width:93px;">
+									<option value="KRW">KRW</option>
+									<option value="USD">USD</option>
+									<option value="JPY">JPY</option>
+								</select>
+							</td>
+		
+							<!-- 金額 -->
+							<td>
+								<input type="text" name="purchase" value="" style="width:100px;"> <!-- amountOfMoney -->
+							</td>
+							<!-- コメント(説明) -->				
+							<td>
+								<input type="text" name="contents">
+							</td>	
+						</tr>
+					</table>
+				</form>
+   				
         	</section>
 
     		<footer class="modal-card-foot">
